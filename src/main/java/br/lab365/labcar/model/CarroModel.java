@@ -2,12 +2,16 @@ package br.lab365.labcar.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 
 @Data
+@Getter
 @Entity
 @Table(name = "carro")
+@NoArgsConstructor
 public class CarroModel {
 
     @Id
@@ -28,5 +32,10 @@ public class CarroModel {
 
     @Column(columnDefinition = "text")
     private String foto;
+
+    public CarroModel(String marca, String modelo) {
+        this.marca = marca;
+        this.modelo = modelo;
+    }
 
 }
