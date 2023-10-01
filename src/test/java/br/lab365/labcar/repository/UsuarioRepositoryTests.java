@@ -2,8 +2,8 @@ package br.lab365.labcar.repository;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
+import br.lab365.labcar.model.UsuarioFixture;
 import br.lab365.labcar.model.UsuarioModel;
-import br.lab365.labcar.repository.UsuarioRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -24,10 +24,7 @@ public class UsuarioRepositoryTests {
 
     @Test
     public void testSave() {
-        UsuarioModel newUser = new UsuarioModel();
-        newUser.setNome("John Doe");
-        newUser.setEmail("johndoe@example.com");
-        newUser.setSenha("password123");
+        UsuarioModel newUser = UsuarioFixture.valid();
 
         when(usuarioRepository.save(newUser)).thenReturn(newUser);
 

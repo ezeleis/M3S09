@@ -3,6 +3,7 @@ package br.lab365.labcar.repository;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
+import br.lab365.labcar.model.CarroFixture;
 import br.lab365.labcar.model.CarroModel;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -27,12 +28,7 @@ public class CarroRepositoryTests {
 
     @Test
     public void testSave() {
-        CarroModel newCarro = new CarroModel();
-        newCarro.setMarca("Toyota");
-        newCarro.setModelo("Camry");
-        newCarro.setAno(2022);
-        newCarro.setPreco(new BigDecimal("25000.00"));
-        newCarro.setFoto("carro.jpg");
+        CarroModel newCarro = CarroFixture.valid();
 
         when(carroRepository.save(newCarro)).thenReturn(newCarro);
 
@@ -45,7 +41,7 @@ public class CarroRepositoryTests {
 
     @Test
     public void testFindById() {
-        CarroModel sampleCarro = new CarroModel();
+        CarroModel sampleCarro = CarroFixture.valid();
         sampleCarro.setId(1L);
         sampleCarro.setMarca("Toyota");
         sampleCarro.setModelo("Camry");
