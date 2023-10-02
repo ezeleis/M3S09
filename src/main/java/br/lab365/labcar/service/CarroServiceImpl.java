@@ -5,6 +5,7 @@ import br.lab365.labcar.model.CarroModel;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CarroServiceImpl implements CarroService {
@@ -22,7 +23,13 @@ public class CarroServiceImpl implements CarroService {
 
     @Override
     public CarroModel buscarPorId(Long id) {
-        return carroRepository.findById(id).get();
+        Optional<CarroModel> carroOptional = carroRepository.findById(id);
+        return carroOptional.orElse(null);
+    }
+
+
+    public Optional<CarroModel> buscarPorIdOptional(Long id) {
+        return carroRepository.findById(id);
     }
 
     @Override
